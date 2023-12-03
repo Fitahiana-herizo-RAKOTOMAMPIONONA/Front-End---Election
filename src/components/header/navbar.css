@@ -1,0 +1,15 @@
+.listeNav{
+    display: flex;
+}
+.imagePhotoProfil{
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.NavBar{
+    position: sticky;
+    align-items: center;
+    width: 100%;
+}
