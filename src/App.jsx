@@ -6,6 +6,7 @@ import Vote from './routes/vote/vote';
 import Apropos from './routes/apropos/apropos';
 import SignUP from './routes/signUP/signUP';
 import SignIn from './routes/signIn/singIn';
+import Regle from './routes/regle/regle';
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
           <Route element={<Apropos/>} path='/apropos'/>
           <Route element={<SignUP/>} path='/signUp'/>
           <Route element={<SignIn/>} path='/signIn'/>
+          <Route element={<Regle/>} path='/regle'/>
         </Routes>
       </BrowserRouter>
     </div>

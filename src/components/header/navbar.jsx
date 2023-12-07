@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Box, Button, IconButton } from "@mui/material";
 import { NotificationImportantOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -23,6 +23,9 @@ function NavListe({ item, to }) {
 }
 
 function NavBar({ connecte }) {
+
+  const [estConnecte,setEstConnecte] = useState(connecte)
+
   return (
     <Box display="flex" justifyContent="space-between" paddingTop="10px"  className="NavBar">
       <Box>

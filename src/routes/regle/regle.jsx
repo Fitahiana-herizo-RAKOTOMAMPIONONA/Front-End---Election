@@ -5,4 +5,4 @@ function Regle(){
         <NavBar connecte={false}/>
     </Box>
 }
-export default Regle
+export default Regle;
