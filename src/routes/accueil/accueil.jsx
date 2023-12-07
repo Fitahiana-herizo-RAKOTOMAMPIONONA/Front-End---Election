@@ -5,7 +5,7 @@ import NavBar from "../../components/header/navbar";
 class Accueil extends Component{
     render(){
         return <Box>
-               <NavBar connecte={true}/>
+               <NavBar/>
         </Box>
     }
 }

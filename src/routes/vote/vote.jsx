@@ -4,7 +4,7 @@ import NavBar from "../../components/header/navbar";
 class Vote extends Component{
     render(){
         return <Box>
-            <NavBar connecte={false}/>
+            <NavBar/>
         </Box>
     }
 }

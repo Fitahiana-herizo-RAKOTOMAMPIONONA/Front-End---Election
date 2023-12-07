@@ -1,4 +1,3 @@
-// JSX - SignIn.jsx
 import React, { useState } from "react";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -14,26 +13,15 @@ function SignIn() {
 
   const navigate = useNavigate();
 
-  axios.default.withCredentials = true
+  axios.defaults.withCredentials = true;
   const EnvoyerRequete = async (e) => {
     e.preventDefault();
-
     try {
         const response = await axios.post("http://localhost:8081/verifier", values);
-        // console.log(response.data.success)
         if (response.data.success === "success"){
           navigate('/');
         }
     } catch (error) {
-      // if(error === "erreur de connexion") {
-      //     alert("erreur de connexion")
-      //   }else if(error === "cette mail n'existe pas") {
-      //     alert("cette mail n'existe pas")
-      //   }else if(error === "Erreur lors du comparaison du mot de passe") {
-      //     alert("Erreur lors du comparaison du mot de passe")
-      //   }else if(error === "Mot de passe Incorrect") {
-      //     alert("Mot de passe Incorrect")
-      //   }
       console.error("Erreur lors de la requête:", error.message);
     }
   };

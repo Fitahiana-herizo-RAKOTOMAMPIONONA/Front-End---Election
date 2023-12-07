@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { Typography, Box, Button, IconButton } from "@mui/material";
 import { NotificationImportantOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import { dataNavBar } from "../../data/navbar";
 import "./navbar.css";
 function NavListe({ item, to }) {
@@ -22,9 +24,22 @@ function NavListe({ item, to }) {
   );
 }
 
-function NavBar({ connecte }) {
+function NavBar({  }) {
+  const [connecte,setConnecte] = useState(true)
 
-  const [estConnecte,setEstConnecte] = useState(connecte)
+  // axios.defaults.withCredentials = true
+  // useEffect(()=>{
+  //   try {
+  //     const response =  axios.post("http://localhost:8081/verifier", values);
+  //       if (response.data.success === "success"){
+  //         navigate('/');
+  //       }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+
+  // },[])
+
 
   return (
     <Box display="flex" justifyContent="space-between" paddingTop="10px"  className="NavBar">

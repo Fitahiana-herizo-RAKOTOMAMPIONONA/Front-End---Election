@@ -6,21 +6,38 @@ import { useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 function SignUP(){
-
-    const [values ,setValues] = useState({
-        nom :"",
-        email: "",
-        motDePasse: ""
-    })
-    const navigate = useNavigate()
-    const EnvoyerReponse= (e)=>{
-        e.preventDefault()
-        axios.post("http://localhost:8081/register" , values)
-        .then(res => {
-         navigate('/signIn')
-        })
-        .catch(error => console.log(error))
-    }
+        const [values, setValues] = useState({
+          nom: "",
+          email: "",
+          motDePasse: "",
+        });
+      
+        // const navigate = useNavigate();
+      
+        // const EnvoyerReponse = async (e) => {
+        //   e.preventDefault();
+        //   try {
+        //     const response = await axios.post("http://localhost:8081/register", values);
+        //     navigate('/signIn');
+        //   } catch (error) {
+        //     console.error("Erreur lors de la requête:", error.message);
+        //   }
+        // };
+        const navigate = useNavigate();
+        axios.defaults.withCredentials = true;
+        const EnvoyerReponse = async (e) => {
+          e.preventDefault();
+          try {
+            const response = await axios.post("http://localhost:8081/register", values);
+            if (response.data.success === "success") {
+              navigate('/signIn');
+            }
+            navigate('/signIn');
+          } catch (error) {
+            console.error("Erreur lors de la requête:", error.message);
+          }
+        };
+  
 
     return <Box width="100%" position="relative">
         <Typography fontWeight="bold" fontSize="20px">
