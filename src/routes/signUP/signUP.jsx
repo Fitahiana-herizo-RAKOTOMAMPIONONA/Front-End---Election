@@ -11,18 +11,7 @@ function SignUP(){
           email: "",
           motDePasse: "",
         });
-      
-        // const navigate = useNavigate();
-      
-        // const EnvoyerReponse = async (e) => {
-        //   e.preventDefault();
-        //   try {
-        //     const response = await axios.post("http://localhost:8081/register", values);
-        //     navigate('/signIn');
-        //   } catch (error) {
-        //     console.error("Erreur lors de la requête:", error.message);
-        //   }
-        // };
+        
         const navigate = useNavigate();
         axios.defaults.withCredentials = true;
         const EnvoyerReponse = async (e) => {

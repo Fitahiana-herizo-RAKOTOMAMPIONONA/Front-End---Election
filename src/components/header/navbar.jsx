@@ -24,21 +24,38 @@ function NavListe({ item, to }) {
   );
 }
 
-function NavBar({  }) {
-  const [connecte,setConnecte] = useState(true)
+function NavBar() {
+  const [connecte,setConnecte] = useState(false)
+  const [nom,setNom] = useState(null)
 
-  // axios.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
   // useEffect(()=>{
   //   try {
-  //     const response =  axios.post("http://localhost:8081/verifier", values);
-  //       if (response.data.success === "success"){
-  //         navigate('/');
-  //       }
-  //   } catch (error) {
-  //     console.log(error)
+  //     const response = axios.get("http://localhost:8081")
+  //     if (response.data.status=== "success"){
+  //       setNom(response.data.nom)
+  //       setConnecte(true)
+  //     }
+  //   }catch(e){
+  //     console.log(e);
   //   }
-
   // },[])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8081");
+        if (response.data.status=== "success"){
+          setNom(response.data.nom)
+          setConnecte(true)
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
 
   return (
@@ -62,47 +79,47 @@ function NavBar({  }) {
         </ul>
       </Box>
       {connecte ? (
-        <Box display="flex" justifyContent="space-around">
-          <Link to="/signUp">
-            <Button
-              sx={{
-                backgroundColor: "var(--thirst)",
-                color: "white",
-                padding: "5px 15px",
-                marginRight: "20px",
-                textTransform: "capitalize"
-              }}
-              >
-              S'inscrire
-            </Button>
-          </Link>
-          <Link to="/signIn">
-              <Button
-                sx={{
-                  color: "white",
-                  backgroundColor: "var(--second)",
-                  padding: "5px 15px",
-                  textTransform: "capitalize"
-                }}
-              >
-                Se connecter
-              </Button>
-          </Link>
-          
-        </Box>
+              <Box display="flex" justifyContent="space-around">
+              <IconButton>
+                <NotificationImportantOutlined />
+              </IconButton>
+              <IconButton>
+                <img
+                  src="./assets/image/profile.jpg"
+                  alt=""
+                  className="imagePhotoProfil"
+                />
+              </IconButton>
+            </Box>
       ) : (
-        <Box display="flex" justifyContent="space-around">
-          <IconButton>
-            <NotificationImportantOutlined />
-          </IconButton>
-          <IconButton>
-            <img
-              src="./assets/image/profile.jpg"
-              alt=""
-              className="imagePhotoProfil"
-            />
-          </IconButton>
-        </Box>
+                <Box display="flex" justifyContent="space-around">
+                  <Link to="/signUp">
+                    <Button
+                      sx={{
+                        backgroundColor: "var(--thirst)",
+                        color: "white",
+                        padding: "5px 15px",
+                        marginRight: "20px",
+                        textTransform: "capitalize"
+                      }}
+                      >
+                      S'inscrire
+                    </Button>
+                  </Link>
+                  <Link to="/signIn">
+                      <Button
+                        sx={{
+                          color: "white",
+                          backgroundColor: "var(--second)",
+                          padding: "5px 15px",
+                          textTransform: "capitalize"
+                        }}
+                      >
+                        Se connecter
+                      </Button>
+                  </Link>
+                  {nom}
+                </Box>
       )}
     </Box>
   );
