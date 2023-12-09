@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Typography, Box, Button, IconButton } from "@mui/material";
 import { NotificationImportantOutlined } from "@mui/icons-material";
+import {Menu} from "@mui/icons-material"
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { dataNavBar } from "../../data/navbar";
@@ -29,18 +30,6 @@ function NavBar() {
   const [nom,setNom] = useState(null)
 
   axios.defaults.withCredentials = true
-  // useEffect(()=>{
-  //   try {
-  //     const response = axios.get("http://localhost:8081")
-  //     if (response.data.status=== "success"){
-  //       setNom(response.data.nom)
-  //       setConnecte(true)
-  //     }
-  //   }catch(e){
-  //     console.log(e);
-  //   }
-  // },[])
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -57,22 +46,70 @@ function NavBar() {
     fetchData();
   }, []);
 
+  const setFenetre =(e)=>{
+    e.preventDefault()
+    console.log("fenetr");
+  }
 
   return (
-    <Box display="flex" justifyContent="space-between" paddingTop="10px"  className="NavBar">
-      <Box>
-        <Typography
-          sx={{
-            fontFamily: "cursive",
-            color: "var(--thirst)",
-            cursor: "pointer"
-          }}
-        >
-          E-vote
-        </Typography>
+    <Box 
+      display="flex"
+      justifyContent="space-between"
+      paddingTop="10px"
+      className="NavBar"
+      sx={{
+        "@media screen and (max-width: 600px)" : {
+            position:"fixed",
+            zIndex:"10",
+            boxShadow : "0px 2px 10px ",
+            backgroundColor : "var(--primary)",
+            marginBottom: "100px"
+          }
+      }}
+    >
+      <Box display="flex" alignItems="center">
+          <IconButton
+            sx={{
+              opacity: 0,
+              visibility: "hidden",
+              display: "none",
+              "@media screen and (max-width: 600px)" : {
+                opacity: 1,
+                visibility: "visible" ,
+                display: "block",
+              }
+            }}
+            onClick={setFenetre}
+          >
+              <Menu/>
+          </IconButton>
+          <Box>
+            <Typography
+              sx={{
+                fontFamily: "cursive",
+                color: "var(--thirst)",
+                cursor: "pointer"
+              }}
+            >
+              E-vote
+            </Typography>
+          </Box>
       </Box>
-      <Box>
-        <ul className="listeNav">
+      <Box 
+        sx={{
+          opacity: 1,
+          visibility: "visible" ,
+          display: "block",
+          "@media screen and (max-width: 600px)" : {
+            opacity: 0,
+            visibility: "hidden",
+            display: "none",
+          }
+        }}
+      >
+        <ul 
+          className="listeNav"
+        >
           {dataNavBar.map((item, index) => (
             <NavListe item={item.nom} to={item.chemin} key={index} />
           ))}

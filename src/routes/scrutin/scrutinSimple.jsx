@@ -1,10 +1,9 @@
 import { Box } from "@mui/material";
 import NavBar from "../../components/header/navbar";
-import "./regle.css"
 
-function Regle(){
+function ScrutinSimple(){
     return <Box>
         <NavBar/>
     </Box>
 }
-export default Regle;
+export default ScrutinSimple

@@ -10,6 +10,7 @@
 }
 ul{
     list-style: none;
+    align-items: safe;
 }
 a{
     text-decoration: none;

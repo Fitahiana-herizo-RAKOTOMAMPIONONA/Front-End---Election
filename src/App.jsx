@@ -7,6 +7,10 @@ import Apropos from './routes/apropos/apropos';
 import SignUP from './routes/signUP/signUP';
 import SignIn from './routes/signIn/singIn';
 import Regle from './routes/regle/regle';
+import ScrutinElection from './routes/scrutin/scrutinElection';
+import ScrutinSimple from './routes/scrutin/scrutinSimple';
+import Referendum from './routes/scrutin/referendum';
+
 function App() {
   return (
     <div className="App">
@@ -19,6 +23,9 @@ function App() {
           <Route element={<SignUP/>} path='/signUp'/>
           <Route element={<SignIn/>} path='/signIn'/>
           <Route element={<Regle/>} path='/regle'/>
+          <Route element={<ScrutinElection/>} path='/Solution/Scrutin'/>
+          <Route element={<ScrutinSimple/>} path='/Solution/Simple'/>
+          <Route element={<Referendum/>} path='/Solution/Referendum'/>
         </Routes>
       </BrowserRouter>
     </div>
