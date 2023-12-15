@@ -15,6 +15,12 @@ function NavListe({ item, to }) {
           marginLeft: "20px",
           cursor: "pointer",
           fontFamily: "cursive",
+          color: "var(--second)",
+          // background: "2px var(--second)",
+          // borderRadius:"10px",
+          // backgroundOrigin: "",
+          // paddingBottom:"20px",
+          // height:"20px"
         }}
       >
         <Link to={to}>
@@ -57,6 +63,7 @@ function NavBar() {
       justifyContent="space-between"
       paddingTop="10px"
       className="NavBar"
+      marginBottom="50px"
       sx={{
         "@media screen and (max-width: 600px)" : {
             position:"fixed",
@@ -129,34 +136,34 @@ function NavBar() {
               </IconButton>
             </Box>
       ) : (
-                <Box display="flex" justifyContent="space-around">
-                  <Link to="/signUp">
-                    <Button
-                      sx={{
-                        backgroundColor: "var(--thirst)",
-                        color: "white",
-                        padding: "5px 15px",
-                        marginRight: "20px",
-                        textTransform: "capitalize"
-                      }}
-                      >
-                      S'inscrire
-                    </Button>
-                  </Link>
-                  <Link to="/signIn">
-                      <Button
-                        sx={{
-                          color: "white",
-                          backgroundColor: "var(--second)",
-                          padding: "5px 15px",
-                          textTransform: "capitalize"
-                        }}
-                      >
-                        Se connecter
-                      </Button>
-                  </Link>
-                  {nom}
-                </Box>
+            <Box display="flex" justifyContent="space-around">
+              <Link to="/signUp">
+                <Button
+                  sx={{
+                    backgroundColor: "var(--thirst)",
+                    color: "white",
+                    padding: "5px 15px",
+                    marginRight: "20px",
+                    textTransform: "capitalize"
+                  }}
+                  >
+                  S'inscrire
+                </Button>
+              </Link>
+              <Link to="/signIn">
+                  <Button
+                    sx={{
+                      color: "white",
+                      backgroundColor: "var(--second)",
+                      padding: "5px 15px",
+                      textTransform: "capitalize"
+                    }}
+                  >
+                    Se connecter
+                  </Button>
+              </Link>
+              {nom}
+              </Box>
       )}
     </Box>
   );

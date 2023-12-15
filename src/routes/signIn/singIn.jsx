@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { NextWeek } from "@mui/icons-material";
+import { SkipPreviousOutlined } from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./signIn.css"
@@ -21,7 +21,7 @@ function SignIn() {
   const EnvoyerRequete = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post("http://localhost:8081/verifier", values);
+        const response = await axios.post("http://localhost:8081/user/verifier", values);
         if (response.data.success === "success"){
           navigate('/');
         }
@@ -40,12 +40,15 @@ function SignIn() {
           display: "flex",
           justifyContent: "center",
           marginTop: "100px",
+          '@media screen and (max-width: 600px)': {
+            marginTop: "10px",
+          },
         }}
       >
         <form onSubmit={EnvoyerRequete}>
           <Box>
             <IconButton>
-              <NextWeek />
+              <SkipPreviousOutlined />
             </IconButton>
             <Box
               sx={{

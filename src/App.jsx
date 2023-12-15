@@ -10,10 +10,13 @@ import Regle from './routes/regle/regle';
 import ScrutinElection from './routes/scrutin/scrutinElection';
 import ScrutinSimple from './routes/scrutin/scrutinSimple';
 import Referendum from './routes/scrutin/referendum';
+import { Box } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
+    <Box className="App"
+      // sx={{backgroundColor: "red"}}
+    >
       <BrowserRouter>
         <Routes>
           <Route element={<Accueil/>} path='/'/>
@@ -28,7 +31,7 @@ function App() {
           <Route element={<Referendum/>} path='/Solution/Referendum'/>
         </Routes>
       </BrowserRouter>
-    </div>
+    </Box>
   );
 }
 

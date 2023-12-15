@@ -1,7 +1,7 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import "./signUP.css"
 import { Link } from "react-router-dom";
-import {NextWeek ,Google} from "@mui/icons-material"
+import {Google ,SkipPrevious} from "@mui/icons-material"
 import { useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ function SignUP(){
         const EnvoyerReponse = async (e) => {
           e.preventDefault();
           try {
-            const response = await axios.post("http://localhost:8081/register", values);
+            const response = await axios.post("http://localhost:8081/user/register", values);
             if (response.data.success === "success") {
               navigate('/signIn');
             }
@@ -36,11 +36,14 @@ function SignUP(){
                 display: "flex",
                 justifyContent: "center",
                 marginTop: "100px",
+                '@media screen and (max-width: 600px)': {
+                    marginTop: "10px",
+                },
         }}>
             <form onSubmit={EnvoyerReponse}>
                 <Box>
                     <IconButton>
-                        <NextWeek/>
+                        <SkipPrevious/>
                     </IconButton>
                     <Box  sx={{
                         border: "2px var(--thirst) solid",

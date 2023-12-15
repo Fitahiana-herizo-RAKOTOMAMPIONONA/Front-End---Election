@@ -3,6 +3,8 @@ import { Component } from "react";
 import NavBar from "../../components/header/navbar";
 import './solution.css'
 import { Link } from "react-router-dom";
+import { NavigateNext} from "@mui/icons-material";
+
 
 function SolutionComponent ({nom,to,description}){
     return <Box 
@@ -13,17 +15,18 @@ function SolutionComponent ({nom,to,description}){
                 position="relative"
                 sx={{
                     cursor: "pointer",
-                    ":hover" : {
-                        boxShadow: "2px 2px 5px",
-                        scale: "1.05"
-                    }
+                    // ":hover" : {
+                    //     boxShadow: "2px 2px 5px",
+                    //     scale: "1.05"
+                    // }
                 }}
             >
                 <Typography 
-                    fontFamily="Roboto sans-serif"
+                    fontFamily="CURSIVE"
                     textAlign='center'
                     fontWeight="900"
                     fontSize="30px"
+                    color="var(--second)"
                 >
                     {nom}
                 </Typography>
@@ -37,8 +40,33 @@ function SolutionComponent ({nom,to,description}){
                 </Box>
                 <Box>
                    <Link to={to}>
-                    <Button>
+                    <Button sx={{ 
+                        borderRadius:"50px",
+                        width:"200px",
+                        backgroundColor: "var(--thirst)",
+                        color: "var(--primary)",
+                        textTransform: "none",
+                        position: "relative",
+                    }}>
+                        <Box sx={{
+                            backgroundColor: "var(--second)",
+                            color: "var(--primary)",
+                            borderRadius:"60px",
+                            height: "100%",
+                            width:"40px",
+                            position: "absolute",
+                            left:0,
+                            top:0,
+                            padding:"auto"
+                        }}>
+                            <NavigateNext
+                            sx={{
+                                marginTop: "5px"
+                            }}/>
+                        </Box>
+                        <Typography>
                             Demo
+                        </Typography>
                     </Button>
                    </Link>
                 </Box>
@@ -52,7 +80,6 @@ class Solution extends Component{
                <NavBar/>
                <Box 
                     display="flex"
-                    // flex="wrap"
                     justifyContent="center"
                     flexWrap="wrap"
                     rowGap="20px"
