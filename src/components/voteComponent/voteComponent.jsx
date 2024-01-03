@@ -1,116 +1,133 @@
 import { SendAndArchiveOutlined ,InfoRounded, CalendarMonth} from "@mui/icons-material";
-import { Box ,Typography } from "@mui/material";
+import { Save } from "@mui/icons-material";
+import { Box ,Button,IconButton,Typography } from "@mui/material";
 export default function VoteComponent ({logo,nom,description,type,votant,statVotant,date,couverture}){
+    const back = [
+        "#3d5bf06f",
+        "#8a5680",
+        "#656565",
+        "#a58484ba",
+        "#224054",
+        "#542222ba",
+        "#5a370cba"
+    ]
+    const generateurCouleur = ()=>{
+        return back[Math.floor(Math.random()*7)]  
+    }
     return <Box sx={{ 
-                width: "100%", 
-                border :"2px var(--second) solid", 
-                display: "grid", 
-                gridTemplateColumns: "1fr 5fr 3fr", 
-                borderRadius: "10px", 
+                width: "380px", 
+                height:"400px", 
+                boxShadow: "1px 3px 5px var(--thirst)",  
+                borderRadius: "10px",
+                borderRadius: "10px",
+                boxSizing: "border-box",
                 position: "relative", 
-                height:"200px", 
                 overflow:"hidden", 
-                margin: "20px 0px", 
                 cursor: "pointer",
-                "@media screen and (max-width : 600px)" : {
-                    width: "94%",
-                    marginLeft: "3%",
-                    height : "100px",
-                    gridTemplateColumns: "1fr 5fr", 
-                    borderRadius: "4px",
+                padding:"4px",
+                backgroundColor: "var(--primary)",
+                "@media screen and (max-width: 1485px)":{
+                    width:"320px",
+                    height:"350px"
+                },
+                "@media screen and (max-width: 872px)":{
+                    width:"250px",
+                    height:"280px"
                 }
-    }}> 
-        <Box sx={{ width:"180px", padding: "20px",
-            "@media screen and (max-width : 600px)" : {
-                width:"50px",
-                padding: "20px",
-            }
-        }}>
-            {
-                logo!==undefined ? (
-                    <img src={logo} alt="" srcSet=""  width="90%"/>
-                    ):(
-                    <img src="./assets/image/securise.png" alt="" srcSet=""  width="90%"/>
-                )
-            }
-        </Box>
-        <Box 
-            overflow="scroll"
-            >
-            <Typography fontFamily="cursive" fontSize="23px" fontWeight="900" marginTop="10px"
+            }}> 
+        <Box
+            backgroundColor={generateurCouleur()}
+            sx={{
+                borderTopLeftRadius: "8px",
+                borderTopRightRadius: "8px",
+                padding:"10px",
+            }}
+        >
+            <Box 
                 sx={{
-                    "@media screen and (max-width : 600px)" : {
-                        fontSize:"15px"
-                    }
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    color: "var(--primary)",
+                    textTransform:"capitalize"
                 }}
             >
-                {nom}
-            </Typography>
-            <Typography fontFamily="cursive" fontWeight="10" fontSize="12px"
-                sx={{
-                    "@media screen and (max-width : 600px)" : {
-                        fontSize:"10px"
-                    }
-                }}
-            >
-                {description}
-            </Typography>
-            <Typography fontFamily="cursive" fontWeight="800" fontSize="15px" margin="7px 0px">  {type}  </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", columnGap:"30px" }}>
-                <Box sx={{ display: "flex", alignItems: "center", columnGap:"5px" }}>
-                    <SendAndArchiveOutlined/>
-                    <Typography fontSize="15px"
-                        sx={{
-                            "@media screen and (max-width : 600px)" : {
-                                fontSize:"10px"
-                            }
-                        }}
-                    >
-                        {votant}
-                    </Typography>
-                </Box>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <InfoRounded/>
-                    <Typography
-                        sx={{
-                            "@media screen and (max-width : 600px)" : {
-                                fontSize:"10px"
-                            }
-                        }}
-                    > {statVotant} </Typography>
-                </Box>
+                <Typography 
+                    fontWeight="600"
+                >
+                    {type || "public"}
+                </Typography>
+                <IconButton>
+                    <Save/>
+                </IconButton>
             </Box>
             <Box
-                sx={{ display: "flex", alignItems: "center", margin:"6px 0px" }}>
-                <CalendarMonth/>
-                <Typography
+                sx={{
+                    height:"100%"
+                }}
+            >
+                <Typography 
+                margin="30px 0px"
+                    textTransform="Capitalize"
+                    color="var(--primary)"
+                    fontSize="40px"
+                    fontFamily="cursive"
+                    fontWeight="500"
                     sx={{
-                        "@media screen and (max-width : 600px)" : {
-                            fontSize:"10px"
+                        "@media screen and (max-width: 872px)":{
+                            fontSize:"20px"
                         }
                     }}
                 >
-                    {date}
+                    {nom}
                 </Typography>
             </Box>
         </Box>
-        <Box 
-            sx={{
-                "@media screen and (max-width : 600px)" : {
-                    display: "none",
-                    opacity: "0",
-                    visibility: "hidden"
-                }
-            }}
-        >
-            {
-                couverture!==undefined ? (
-                    <img src={couverture} alt="" srcSet=""  width="100%" height="100%" className="pdcVote"/>
-                    ):(
-                    <img src="./assets/image/pdcVote.jpg" alt="" srcSet="" width="100%" height="100%" className="pdcVote" />
-                    )
-            }
-            
-        </Box>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    width: "100%",
+                    height:"50px",
+                    position: "absolute",
+                    bottom:"0",
+                }}
+            >
+                <>
+                    {
+                        logo!==undefined ? (
+                            <img src={logo} alt="" srcSet="" width="30px" height="30px"/>
+                            ):(
+                            <img src="./assets/image/securise.png" alt="" srcSet=""   width="40px" height="40px"/>
+                        )
+                    }
+                </>
+                <Typography
+                    textAlign="left"
+                    fontWeight="600"
+                    sx={{
+                        flex:1,
+                        paddingLeft:"20px",
+                        lineHeight:"50px"
+                    }}
+                >
+                    {nom}
+                </Typography>   
+                <Button 
+                    sx={{
+                        backgroundColor: "var(--thirst)",
+                        marginRight:"10px",
+                        borderRadius:"1px",
+                        borderBottomRightRadius: "8px",
+                        color: "var(--primary)",
+                        textTransform: "capitalize",
+                        "@media screen and (max-width: 872px)":{
+                            fontSize:"12"
+                        }
+                }}>
+                    view
+                </Button>
+            </Box>
     </Box>
 }

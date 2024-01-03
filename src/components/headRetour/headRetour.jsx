@@ -7,7 +7,7 @@ export default function HeadRetour({ nom}){
             width:"100%",
             display: "flex",
             justifyContent: "space-around",
-            marginTop:"30px",
+            // marginTop:"30px",
             alignItems: "center",
         }}
     >

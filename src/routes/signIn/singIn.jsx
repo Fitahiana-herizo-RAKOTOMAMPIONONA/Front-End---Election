@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { SkipPreviousOutlined } from "@mui/icons-material";
+import { SkipPrevious } from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./signIn.css"
@@ -48,8 +48,11 @@ function SignIn() {
         <form onSubmit={EnvoyerRequete}>
           <Box>
             <IconButton>
-              <SkipPreviousOutlined />
-            </IconButton>
+              <SkipPrevious sx={{
+                  color: "var(--second)",
+                  fontWeight: "900"
+              }}/>
+          </IconButton>
             <Box
               sx={{
                 border: "2px var(--thirst) solid",

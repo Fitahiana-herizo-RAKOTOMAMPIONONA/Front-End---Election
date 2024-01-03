@@ -7,15 +7,21 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { dataNavBar } from "../../data/navbar";
 import "./navbar.css";
+
+
 function NavListe({ item, to }) {
-  return (
-    <Box>
-      <Typography
+    return ( <Box>
+        <Typography
         sx={{
           marginLeft: "20px",
           cursor: "pointer",
           fontFamily: "cursive",
           color: "var(--second)",
+          ":hover":{
+            paddingBottom: "0",
+            borderBottom: "3px solid",
+            borderRadius:"3px",
+          }
           // background: "2px var(--second)",
           // borderRadius:"10px",
           // backgroundOrigin: "",
@@ -32,38 +38,39 @@ function NavListe({ item, to }) {
 }
 
 function NavBar() {
-  const [connecte,setConnecte] = useState(false)
-  const [nom,setNom] = useState(null)
+    const [connecte,setConnecte] = useState(false)
+    const [nom,setNom] = useState(null)
+    const [pdp,setPdp] =useState(false)
 
-  axios.defaults.withCredentials = true
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8081");
-        if (response.data.status=== "success"){
-          setNom(response.data.nom)
-          setConnecte(true)
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    axios.defaults.withCredentials = true
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get("http://localhost:8081/user/estConnecte");
+                if (response.data.status=== "success"){
+                    setConnecte(true)
+                    setNom(response.data.nom)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
-    fetchData();
-  }, []);
-
+        fetchData();
+    }, []);
   const setFenetre =(e)=>{
     e.preventDefault()
     console.log("fenetr");
   }
-
+  console.log(connecte)
   return (
     <Box 
       display="flex"
       justifyContent="space-between"
       paddingTop="10px"
       className="NavBar"
-      marginBottom="50px"
+      alignItems="center"
+      marginBottom="30px"
       sx={{
         "@media screen and (max-width: 600px)" : {
             position:"fixed",
@@ -127,13 +134,30 @@ function NavBar() {
               <IconButton>
                 <NotificationImportantOutlined />
               </IconButton>
-              <IconButton>
-                <img
-                  src="./assets/image/profile.jpg"
-                  alt=""
-                  className="imagePhotoProfil"
-                />
-              </IconButton>
+              {
+                pdp || nom===null ? (
+                  <IconButton> 
+                    <img
+                      src="./assets/image/profile.jpg"
+                      alt=""
+                      className="imagePhotoProfil"
+                      /> 
+                  </IconButton>
+                ) : (
+                  <IconButton 
+                    sx={{
+                      backgroundColor: "var(--thirst)",
+                      padding: "0px 15px"
+                    }}
+                    >
+                      <Typography
+                        fontWeight="900"
+                      >
+                        {nom[0]}
+                      </Typography>
+                  </IconButton>
+                )
+              }
             </Box>
       ) : (
             <Box display="flex" justifyContent="space-around">

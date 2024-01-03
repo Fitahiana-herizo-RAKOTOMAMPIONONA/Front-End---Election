@@ -7,18 +7,26 @@
     --second : #091856;
     --thirst : #3d5af0;
     --four: #000000;
+    --claire : #656565a3 ;
+    --claire : #5a370cba;
 }
+
 ul{
     list-style: none;
     align-items: safe;
 }
 a{
     text-decoration: none;
+    color: inherit;
 }
 
 .App{
     margin-left: 150px;
     margin-right: 150px;
+}
+.pdp{
+    height: 100%;
+    object-fit: contain;
 }
 @media screen and (max-width: 1500px) {
     

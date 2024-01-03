@@ -11,12 +11,10 @@ import ScrutinElection from './routes/scrutin/scrutinElection';
 import ScrutinSimple from './routes/scrutin/scrutinSimple';
 import Referendum from './routes/scrutin/referendum';
 import { Box } from '@mui/material';
-
+import ScrutinComponent from './routes/scrutinComponennt/scrutinComponent';
 function App() {
   return (
-    <Box className="App"
-      // sx={{backgroundColor: "red"}}
-    >
+    <Box className="App">
       <BrowserRouter>
         <Routes>
           <Route element={<Accueil/>} path='/'/>
@@ -29,10 +27,10 @@ function App() {
           <Route element={<ScrutinElection/>} path='/Solution/Scrutin'/>
           <Route element={<ScrutinSimple/>} path='/Solution/Simple'/>
           <Route element={<Referendum/>} path='/Solution/Referendum'/>
+          <Route element={<ScrutinComponent nom="vote" imagePdc="./assets\image\pdcVote.jpg"/>} path='/test'/>
         </Routes>
       </BrowserRouter>
     </Box>
   );
 }
-
 export default App;

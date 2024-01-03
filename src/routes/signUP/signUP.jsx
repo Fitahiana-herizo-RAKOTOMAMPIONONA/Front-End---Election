@@ -43,7 +43,10 @@ function SignUP(){
             <form onSubmit={EnvoyerReponse}>
                 <Box>
                     <IconButton>
-                        <SkipPrevious/>
+                        <SkipPrevious sx={{
+                            color: "var(--second)",
+                            fontWeight: "900"
+                        }}/>
                     </IconButton>
                     <Box  sx={{
                         border: "2px var(--thirst) solid",
