@@ -1,11 +1,11 @@
-export const dataNavBar= [
+const dataNavBar= [
     {
         nom : "Accueil",
         chemin : "/"
     },
     {
         nom : "Solution",
-        chemin : "/solution"    
+        chemin : "/solution"     
     },
     {
         nom : "Vote",
@@ -20,3 +20,4 @@ export const dataNavBar= [
         chemin : "/apropos"
     },
 ]
+export {dataNavBar}

@@ -1,47 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { Typography, Box, Button, IconButton } from "@mui/material";
-import { NotificationImportantOutlined } from "@mui/icons-material";
+import { FacebookOutlined, Instagram, NotificationImportantOutlined, Twitter } from "@mui/icons-material";
 import {Menu} from "@mui/icons-material"
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { dataNavBar } from "../../data/navbar";
 import "./navbar.css";
+import Input from "@mui/material/Input";
+import { Search } from "@mui/icons-material"; 
 
-
-function NavListe({ item, to }) {
-    return ( <Box>
-        <Typography
-        sx={{
-          marginLeft: "20px",
-          cursor: "pointer",
-          fontFamily: "cursive",
-          color: "var(--second)",
-          ":hover":{
-            paddingBottom: "0",
-            borderBottom: "3px solid",
-            borderRadius:"3px",
-          }
-          // background: "2px var(--second)",
-          // borderRadius:"10px",
-          // backgroundOrigin: "",
-          // paddingBottom:"20px",
-          // height:"20px"
-        }}
-      >
-        <Link to={to}>
-          {item}
-        </Link>
-      </Typography>
-    </Box>
-  );
+export function NavListe({ item, to }) {
+  return ( <Box>
+      <Typography
+      sx={{
+        marginLeft: "20px",
+        cursor: "pointer",
+        fontFamily: "cursive",
+        // color: "var(--primary)",
+        fontFamily : "unigeo3",
+        borderBottom: "3px solid transparent",
+        ":hover":{
+          paddingBottom: "0",
+          borderBottom: "3px solid",
+          borderRadius:"3px",
+        }
+      }}
+    >
+      <Link to={to} sx={{textDecoration:"none", color: "var(--primary)"}}>
+        {item}
+      </Link>
+    </Typography>
+  </Box>
+);
 }
 
 function NavBar() {
-    const [connecte,setConnecte] = useState(false)
-    const [nom,setNom] = useState(null)
-    const [pdp,setPdp] =useState(false)
-
+  const [connecte,setConnecte] = useState(false)
+  const [nom,setNom] = useState(null)
+  const [pdp,setPdp] =useState(false)
+  const head = useRef()
+  const [now,setNow]= useState(Date)
+  setInterval(()=>{
+    setNow(Date().toString())
+  },1000)
     axios.defaults.withCredentials = true
     useEffect(() => {
         const fetchData = async () => {
@@ -55,112 +57,93 @@ function NavBar() {
                 console.log(error);
             }
         };
-
         fetchData();
     }, []);
   const setFenetre =(e)=>{
     e.preventDefault()
     console.log("fenetr");
   }
-  console.log(connecte)
+
   return (
-    <Box 
-      display="flex"
-      justifyContent="space-between"
-      paddingTop="10px"
-      className="NavBar"
-      alignItems="center"
-      marginBottom="30px"
+    <Box
+    position={"fixed"}
       sx={{
-        "@media screen and (max-width: 600px)" : {
-            position:"fixed",
-            zIndex:"10",
-            boxShadow : "0px 2px 10px ",
-            backgroundColor : "var(--primary)",
-            marginBottom: "100px"
-          }
+        position: "sticky",
+        paddingTop: "5px",
+        width: "auto",
+      //   "@media screen and (max-width: 1200px)":{
+      //     margin: 0,
+      // }
       }}
     >
-      <Box display="flex" alignItems="center">
-          <IconButton
-            sx={{
-              opacity: 0,
-              visibility: "hidden",
-              display: "none",
-              "@media screen and (max-width: 600px)" : {
-                opacity: 1,
-                visibility: "visible" ,
-                display: "block",
-              }
-            }}
-            onClick={setFenetre}
-          >
-              <Menu/>
-          </IconButton>
-          <Box>
-            <Typography
-              sx={{
-                fontFamily: "cursive",
-                color: "var(--thirst)",
-                cursor: "pointer"
-              }}
-            >
-              E-vote
-            </Typography>
-          </Box>
-      </Box>
-      <Box 
+      <Box
         sx={{
-          opacity: 1,
-          visibility: "visible" ,
-          display: "block",
-          "@media screen and (max-width: 600px)" : {
-            opacity: 0,
-            visibility: "hidden",
-            display: "none",
-          }
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingBottom:"5px"
         }}
       >
-        <ul 
-          className="listeNav"
+        <Box sx={{
+          flex: "1",
+          gap:"5px"
+        }}>
+          <IconButton>
+            <FacebookOutlined/>
+          </IconButton>
+          <IconButton>
+            <Instagram/>
+          </IconButton>
+          <IconButton>
+            <Twitter/>
+          </IconButton>
+        </Box>
+        <Box
+          sx={{
+            flex:"1",
+            textAlign:"center"
+          }}
         >
-          {dataNavBar.map((item, index) => (
-            <NavListe item={item.nom} to={item.chemin} key={index} />
-          ))}
-        </ul>
-      </Box>
-      {connecte ? (
-              <Box display="flex" justifyContent="space-around">
-              <IconButton>
-                <NotificationImportantOutlined />
-              </IconButton>
-              {
-                pdp || nom===null ? (
-                  <IconButton> 
-                    <img
-                      src="./assets/image/profile.jpg"
-                      alt=""
-                      className="imagePhotoProfil"
-                      /> 
-                  </IconButton>
-                ) : (
-                  <IconButton 
-                    sx={{
-                      backgroundColor: "var(--thirst)",
-                      padding: "0px 15px"
-                    }}
-                    >
-                      <Typography
-                        fontWeight="900"
+          <Typography
+            fontFamily="nexa1"
+            color="var(--second)"
+          >
+            Voteo
+          </Typography>
+        </Box>
+        <Box sx={{flex: 1}}>
+            {connecte ? (
+              <Box display="flex" justifyContent="end">
+                <IconButton>
+                  <NotificationImportantOutlined />
+                </IconButton>
+                  {
+                    pdp || nom===null ? (
+                      <IconButton> 
+                        <img
+                          src="./assets/image/profile.jpg"
+                          alt=""
+                          className="imagePhotoProfil"
+                          /> 
+                      </IconButton>
+                    ) : (
+                      <IconButton 
+                      sx={{
+                        backgroundColor: "var(--thirst)",
+                        padding: "0px 15px"
+                      }}
                       >
-                        {nom[0]}
-                      </Typography>
-                  </IconButton>
-                )
-              }
+                        <Typography
+                          fontWeight="900"
+                        >
+                          {nom[0]}
+                        </Typography>
+                    </IconButton>
+                  )
+                }             
             </Box>
       ) : (
-            <Box display="flex" justifyContent="space-around">
+            <Box display="flex" justifyContent="end">
               <Link to="/signUp">
                 <Button
                   sx={{
@@ -188,7 +171,35 @@ function NavBar() {
               </Link>
               {nom}
               </Box>
-      )}
+        )}
+        </Box>
+      </Box>
+      <Box 
+        sx={{
+          display:"flex",
+          // justifyContent:" center",
+          justifyContent:"space-between",
+          alignItems:"center",
+          background:"var(--second)",
+          color:"var(--primary)",
+          padding: "10px 0px",
+          "@media screen and (max-width : 600px)":{
+            background:"var(--second)",
+            color:"var(--primary)",
+          }
+        }}
+      >
+          <Box>
+            <ul className="listeNav">
+              {dataNavBar.map((item, index) => (
+                <NavListe item={item.nom} to={item.chemin} key={index} />
+              ))}
+            </ul>
+          </Box>
+          <Box>
+            {now}
+          </Box>
+      </Box>
     </Box>
   );
 }

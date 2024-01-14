@@ -1,14 +1,12 @@
-import { Box, Input, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, IconButton, Input } from "@mui/material";
+import { useState } from "react";
 import NavBar from "../../components/header/navbar";
 import './vote.css'
-import axios from "axios";
 import VoteComponent from "../../components/voteComponent/voteComponent";
 import Footer from "../../components/footer/footer";
 import useFetch from "../../state/useFetch";
-import { Link } from "react-router-dom";
 import { Search } from "@mui/icons-material";
-
+import { Description } from "../apropos/aproposControllers";
 function Vote () {
         const {data,load, erreur} = useFetch("http://localhost:8081/scrutin/tout")
         const [query,setQuery] = useState("")
@@ -19,7 +17,7 @@ function Vote () {
             })
         }
         return <Box>
-            <NavBar/>
+            <NavBar/>    
             <Box
                 sx={{
                     width:"100%",
@@ -38,6 +36,7 @@ function Vote () {
                 />
                 <Search/>
             </Box>
+            <Description  description={"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore consequuntur temporibus repudiandae libero commodi dignissimos saepe numquam, doloremque voluptatem asperiores quae enim, adipisci at tempore accusantium hic odit molestias ex."}/>
             {/* <Typography
                 sx={{
                     fontWeight: "20",
@@ -68,6 +67,7 @@ function Vote () {
                                     votant={value.votantMax}
                                     statVotant={value.statistiqueVotants}
                                     date={value.date}
+                                    to={value.id}
                                 />
                     })
                 }

@@ -1,66 +1,36 @@
-import { Box, Typography } from "@mui/material";
-
+import { Box, IconButton, Typography } from "@mui/material";
+import { useState } from "react";
+import { dataNavBar } from "../../data/navbar";
+import { NavListe } from "../header/navbar";
+import { Email, FacebookOutlined, Instagram, LinkedIn } from "@mui/icons-material";
 function Footer() {
+    const [now,setNow]= useState(Date)
   return (
-    <Box
-        sx={{
-            width:"100%",
-            height:"200px",
-            display:"grid",
-            // background: "var(--second)",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            color: "var(--claire)",
-            textAlign: "center",
-            padding:"20px",
-            margin:"0"
-        }}   
-    >
-        <Box>
-            <Typography 
-                    fontWeight="600"
-                    fontSize="20"
-                    // color="var(--primary)"
-                    marginBottom="20px"
-                >
-                    Navigation
-                </Typography>
-                <Typography>Accueil</Typography>
-                <Typography>Solution</Typography>
-                <Typography>Vote</Typography>
-                <Typography>Regle</Typography>
-                <Typography>A propos</Typography>
-            </Box>
-       <Box>
-            <Typography 
-                fontWeight="600"
-                fontSize="20"
-                // color="var(--primary)"
-                marginBottom="20px"
-            >
-                Navigation
-            </Typography>
-            <Typography>Accueil</Typography>
-            <Typography>Solution</Typography>
-            <Typography>Vote</Typography>
-            <Typography>Regle</Typography>
-            <Typography>A propos</Typography>
+   <Box borderTop={"2px solid var(--second)"} padding={"30px"}>
+        <Typography fontSize={"30px"} margin={"auto"} fontFamily={"nexa1"} color={"var(--second)"} flex={"1"} textAlign={"center"}>
+            Voteo
+        </Typography>
+        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+            {dataNavBar.map((item,index)=>{
+                return <NavListe item={item.nom} to={item.chemin} />
+            })}
         </Box>
-        <Box>
-            <Typography 
-                fontWeight="600"
-                fontSize="20"
-                // color="var(--primary)"
-                marginBottom="20px"
-            >
-                Navigation
-            </Typography>
-            <Typography>Accueil</Typography>
-            <Typography>Solution</Typography>
-            <Typography>Vote</Typography>
-            <Typography>Regle</Typography>
-            <Typography>A propos</Typography>
+        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+            <IconButton>
+                <FacebookOutlined color="var(--second)" fontSize="20px"/>
+            </IconButton>
+            <IconButton>
+                <LinkedIn color="var(--second)"/>
+            </IconButton>
+            <IconButton>
+                <Instagram color="var(--second)"/>
+            </IconButton>
+            <IconButton>
+                <Email color="var(--second)"/>
+            </IconButton>
         </Box>
-    </Box>
+        <Typography textAlign={"center"} color={"#7f7f7f"}>copyright @{now.toString()}</Typography>
+   </Box>
   );
 }
 

@@ -4,7 +4,7 @@ import NavBar from "../../components/header/navbar";
 import './solution.css'
 import { Link } from "react-router-dom";
 import { NavigateNext} from "@mui/icons-material";
-
+import { Description } from "../apropos/aproposControllers";
 
 function SolutionComponent ({nom,to,description}){
     return <Box 
@@ -22,7 +22,7 @@ function SolutionComponent ({nom,to,description}){
                 }}
             >
                 <Typography 
-                    fontFamily="CURSIVE"
+                    fontFamily="unigeo"
                     textAlign='center'
                     fontWeight="900"
                     fontSize="30px"
@@ -34,7 +34,10 @@ function SolutionComponent ({nom,to,description}){
                     <img src="./assets/image/temps.jpg" alt="" srcSet="" className="photoSolution" width="100%" />
                 </Box>
                 <Box>
-                    <Typography>
+                    <Typography
+                        fontFamily="unigeo"
+                        color="var(--second)"
+                    >
                         {description}
                     </Typography>
                 </Box>
@@ -78,6 +81,7 @@ class Solution extends Component{
     render(){
         return <Box>
                <NavBar/>
+                <Description  description={"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore consequuntur temporibus repudiandae libero commodi dignissimos saepe numquam, doloremque voluptatem asperiores quae enim, adipisci at tempore accusantium hic odit molestias ex."}/>
                <Box 
                     display="flex"
                     justifyContent="center"

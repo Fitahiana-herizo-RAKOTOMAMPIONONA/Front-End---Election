@@ -1,7 +1,8 @@
-import { SendAndArchiveOutlined ,InfoRounded, CalendarMonth} from "@mui/icons-material";
+import { SendAndArchiveOutlined ,InfoRounded, CalendarMonth, AccountCircleRounded} from "@mui/icons-material";
 import { Save } from "@mui/icons-material";
 import { Box ,Button,IconButton,Typography } from "@mui/material";
-export default function VoteComponent ({logo,nom,description,type,votant,statVotant,date,couverture}){
+import { Link } from "react-router-dom";
+export default function VoteComponent ({logo,nom,description,type,votant,statVotant,date,couverture,to}){
     const back = [
         "#3d5bf06f",
         "#8a5680",
@@ -92,6 +93,7 @@ export default function VoteComponent ({logo,nom,description,type,votant,statVot
                     height:"50px",
                     position: "absolute",
                     bottom:"0",
+                    color:"var(--second)"
                 }}
             >
                 <>
@@ -99,7 +101,7 @@ export default function VoteComponent ({logo,nom,description,type,votant,statVot
                         logo!==undefined ? (
                             <img src={logo} alt="" srcSet="" width="30px" height="30px"/>
                             ):(
-                            <img src="./assets/image/securise.png" alt="" srcSet=""   width="40px" height="40px"/>
+                            <AccountCircleRounded/>
                         )
                     }
                 </>
@@ -114,20 +116,22 @@ export default function VoteComponent ({logo,nom,description,type,votant,statVot
                 >
                     {nom}
                 </Typography>   
-                <Button 
-                    sx={{
-                        backgroundColor: "var(--thirst)",
-                        marginRight:"10px",
-                        borderRadius:"1px",
-                        borderBottomRightRadius: "8px",
-                        color: "var(--primary)",
-                        textTransform: "capitalize",
-                        "@media screen and (max-width: 872px)":{
-                            fontSize:"12"
-                        }
-                }}>
-                    view
-                </Button>
+                <Link to={`/vote/details/${to}`}>
+                    <Button 
+                        sx={{
+                            backgroundColor: "var(--thirst)",
+                            marginRight:"10px",
+                            borderRadius:"1px",
+                            borderBottomRightRadius: "8px",
+                            color: "var(--primary)",
+                            textTransform: "capitalize",
+                            "@media screen and (max-width: 872px)":{
+                                fontSize:"12"
+                            }
+                    }}>
+                        view
+                    </Button>
+                </Link>
             </Box>
     </Box>
 }
