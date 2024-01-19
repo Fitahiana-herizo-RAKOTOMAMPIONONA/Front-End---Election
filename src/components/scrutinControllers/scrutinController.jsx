@@ -13,7 +13,7 @@ function CandidatCard (){
                 fontSize:"50px"
             }}
         />
-        <img src=".\public\assets\image\profile.jpg" alt="" srcset="" className="imageCandidat"/>
+        <img src=".\public\assets\image\profile.jpg" alt="" srcSet="" className="imageCandidat"/>
     </Box>
 }
 function SousTitreConfig ({titre}){

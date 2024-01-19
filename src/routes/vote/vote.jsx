@@ -1,4 +1,4 @@
-import { Box, IconButton, Input } from "@mui/material";
+import { Box, Input } from "@mui/material";
 import { useState } from "react";
 import NavBar from "../../components/header/navbar";
 import './vote.css'
@@ -9,11 +9,13 @@ import { Search } from "@mui/icons-material";
 import { Description } from "../apropos/aproposControllers";
 function Vote () {
         const {data,load, erreur} = useFetch("http://localhost:8081/scrutin/tout")
+        console.log(load,erreur);
         const [query,setQuery] = useState("")
         const FiltrerParNom = (query) =>{
             return data.filter((element)=>{
-                if  (element.nom.toLowerCase().includes(query.toLowerCase()) /* || element.description.toLowerCase().includes(query.toLowerCase())*/) 
-                    return element
+                if(element.nomScrutin.toLowerCase().includes(query.toLowerCase()) /* || element.description.toLowerCase().includes(query.toLowerCase())*/) 
+                    return element 
+                else return null
             })
         }
         return <Box>
@@ -54,14 +56,20 @@ function Vote () {
                     justifyContent: "center",
                     flexWrap: "wrap",
                     marginBottom: "100px",
-                    gap: "15px"
+                    gap: "15px",
+                    maxWidth: "1500px",
+                    margin:"auto",
+                    "@media screen and (max-width:1500px)":{
+                        marginLeft: "20px",
+                        marginRight: "20px",
+                    }
                 }}
             >
                 {
                     FiltrerParNom(query).map((value, index)=>{
                         return<VoteComponent
                                     key={index}
-                                    nom={value.nom}
+                                    nom={value.nomScrutin}
                                     description={value.description}
                                     type={value.type}
                                     votant={value.votantMax}

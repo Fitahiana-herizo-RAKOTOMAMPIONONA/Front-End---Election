@@ -5,7 +5,7 @@ import HeadRetour from "../../components/headRetour/headRetour";
 function Referendum(){
     return <Box>
         <NavBar/>
-        <HeadRetour nom="Referendum"/>
+        <HeadRetour nom="Referendum" to={"/solution"}/>
     </Box>
 }
 export default Referendum

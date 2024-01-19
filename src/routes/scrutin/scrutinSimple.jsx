@@ -5,7 +5,7 @@ import HeadRetour from "../../components/headRetour/headRetour";
 function ScrutinSimple(){
     return <Box>
         <NavBar/>
-        <HeadRetour nom="Simple scrutin"/>
+        <HeadRetour nom="Simple scrutin" to={"/solution"}/>
 
     </Box>
 }

@@ -1,6 +1,7 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { SkipPrevious } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { ArrowBack } from "@mui/icons-material";
 
 export default function HeadRetour({ nom,to}){
     return <Box
@@ -8,13 +9,14 @@ export default function HeadRetour({ nom,to}){
             width:"100%",
             display: "flex",
             justifyContent: "space-around",
-            // marginTop:"30px",
             alignItems: "center",
+            maxWidth: "1500px",
+            margin:"auto"
         }}
     >
         <Link to={to} style={{flex:1}}>
             <IconButton>
-                <SkipPrevious sx={{
+                <ArrowBack sx={{
                     color: "var(--second)",
                     fontWeight: "900"
                 }}/>

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Box,Typography ,IconButton } from "@mui/material";
 import "./apropos.css"
 import { FormatQuoteSharp } from "@mui/icons-material";
-import { slideINtop,slideINleft,undeux } from "../../animation/animation"
+import { slideINtop} from "../../animation/animation"
 
 function SousTitre ({nom}){
     useEffect(()=>{

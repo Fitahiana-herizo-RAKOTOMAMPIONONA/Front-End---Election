@@ -1,10 +1,9 @@
-import { Box, FormControlLabel, Input, TextareaAutosize, Typography ,Textarea, Button, IconButton} from "@mui/material";
-import TextField from "@mui/material/TextField";
+import { Box, Input, TextareaAutosize, Typography , Button} from "@mui/material";
 import NavBar from "../../components/header/navbar";
 import Footer from "../../components/footer/footer"
 import "./apropos.css"
 import { useEffect } from "react";
-import { slideINleft,slideINtop,slideInRight,undeux } from "../../animation/animation"
+import { slideINleft,slideINtop,slideInRight } from "../../animation/animation"
 import { SousTitre , Temoin,Description, Reseaux,TeamCard} from "./aproposControllers";
 import { Facebook, LinkedIn, Send ,Email} from "@mui/icons-material";
 export default function Apropos(){
@@ -17,8 +16,14 @@ export default function Apropos(){
         slideInRight(".input2")
         slideInRight(".input3")
     },[])
-    return <Box>
+    return <Box >
         <NavBar/>
+        <Box sx={{maxWidth: "1500px",margin:"auto",
+            "@media screen and (max-width:1500px)":{
+                marginLeft: "20px",
+                marginRight: "20px",
+            }
+        }}>
             <SousTitre nom={"Temoignage"} className={"sousTitre1"}/>  
             <Description description={"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam illo fugiat molestiae unde neque maiores ullam, optio commodi adipisci a minus dignissimos tenetur, tempore amet? Vel vitae delectus quia sit?"}/>
             <Box display={"flex"} flexWrap={"wrap"} justifyContent={"center"} gap={"20px"} >
@@ -40,8 +45,6 @@ export default function Apropos(){
                             "@media screen and (max-width: 800px)":{
                                 display: "block",
                                 margin: "auto",
-                                // marginLeft: "auto",
-                                // marginRight: "auto",
                             }
                         }}
                     >
@@ -84,8 +87,8 @@ export default function Apropos(){
                             <Typography textAlign={"center"} fontSize={"18px"} textTransform={"capitalize"} fontFamily={"unigeo3"} color={"var(--second)"}  >
                                 ecrit pour nous
                             </Typography>
-                            <Input fullWidth placeholder="votre nom" sx={{padding:"4px 10px"}} margin={"10px 0px"} className="input1"/>
-                            <Input fullWidth placeholder="Email" sx={{padding:"4px 10px"}} margin={"0px 10px"} className="input2"/>
+                            <Input fullWidth placeholder="votre nom" sx={{padding:"4px 10px"}}  className="input1"/>
+                            <Input fullWidth placeholder="Email" sx={{padding:"4px 10px"}}className="input2"/>
                             <TextareaAutosize sx={{margin:"20px 0px",width: "100%"}} placeholder="votre message" className="input3"/>
                             {/* <textarea
                                 name="projet" 
@@ -111,6 +114,7 @@ export default function Apropos(){
                 <TeamCard nom={"fata"}/>
                 <TeamCard nom={"herizo"}/>
             </Box>
+        </Box>
             <Footer/>
         </Box>
 }

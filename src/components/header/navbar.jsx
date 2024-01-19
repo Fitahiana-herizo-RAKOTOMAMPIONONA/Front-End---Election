@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Typography, Box, Button, IconButton } from "@mui/material";
 import { FacebookOutlined, Instagram, NotificationImportantOutlined, Twitter } from "@mui/icons-material";
-import {Menu} from "@mui/icons-material"
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { dataNavBar } from "../../data/navbar";
 import "./navbar.css";
-import Input from "@mui/material/Input";
-import { Search } from "@mui/icons-material"; 
+// import {Menu} from "@mui/icons-material"
+// import Input from "@mui/material/Input";
+// import { Search } from "@mui/icons-material"; 
 
 export function NavListe({ item, to }) {
   return ( <Box>
@@ -16,7 +16,6 @@ export function NavListe({ item, to }) {
       sx={{
         marginLeft: "20px",
         cursor: "pointer",
-        fontFamily: "cursive",
         // color: "var(--primary)",
         fontFamily : "unigeo3",
         borderBottom: "3px solid transparent",
@@ -39,8 +38,15 @@ function NavBar() {
   const [connecte,setConnecte] = useState(false)
   const [nom,setNom] = useState(null)
   const [pdp,setPdp] =useState(false)
-  const head = useRef()
   const [now,setNow]= useState(Date)
+  const [time,setTime]=useState(new Date)
+
+  useEffect(()=>{
+    const intervalleTime = setInterval(()=>{
+        setTime(new Date)
+    },1000)
+    return ()=> clearInterval(intervalleTime) 
+  },[])
   setInterval(()=>{
     setNow(Date().toString())
   },1000)
@@ -51,6 +57,7 @@ function NavBar() {
                 const response = await axios.get("http://localhost:8081/user/estConnecte");
                 if (response.data.status=== "success"){
                     setConnecte(true)
+                    setPdp(false)
                     setNom(response.data.nom)
                 }
             } catch (error) {
@@ -59,22 +66,23 @@ function NavBar() {
         };
         fetchData();
     }, []);
-  const setFenetre =(e)=>{
-    e.preventDefault()
-    console.log("fenetr");
-  }
 
   return (
     <Box
-    position={"fixed"}
       sx={{
         position: "sticky",
         paddingTop: "5px",
-        width: "auto",
-      //   "@media screen and (max-width: 1200px)":{
-      //     margin: 0,
-      // }
-      }}
+            // "@media screen and (max-width:1500px)":{
+            //     marginLeft: "20px",
+            //     marginRight: "20px",
+            // }
+        }}
+      // sx={{
+      //   // width: "auto",
+      // //   "@media screen and (max-width: 1200px)":{
+      // //     margin: 0,
+      // // }
+      // }}
     >
       <Box
         sx={{
@@ -197,7 +205,8 @@ function NavBar() {
             </ul>
           </Box>
           <Box>
-            {now}
+            {/* {time} */}
+            {/* {now.getHours()} */}
           </Box>
       </Box>
     </Box>
