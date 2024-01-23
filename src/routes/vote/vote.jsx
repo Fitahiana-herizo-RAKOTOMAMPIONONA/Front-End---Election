@@ -8,7 +8,8 @@ import useFetch from "../../state/useFetch";
 import { Search } from "@mui/icons-material";
 import { Description } from "../apropos/aproposControllers";
 function Vote () {
-        const {data,load, erreur} = useFetch("http://localhost:8081/scrutin/tout")
+        // const {data,load, erreur} = useFetch("http://localhost:8081/scrutin/tout")
+        const {data,load, erreur} = useFetch("http://localhost:8081/scrutin/user")
         console.log(load,erreur);
         const [query,setQuery] = useState("")
         const FiltrerParNom = (query) =>{
@@ -76,6 +77,8 @@ function Vote () {
                                     statVotant={value.statistiqueVotants}
                                     date={value.date}
                                     to={value.id}
+                                    user={value.nom}
+                                    idUser={value.idUser}
                                 />
                     })
                 }

@@ -178,9 +178,13 @@ function ScrutinElection(){
                             <Input placeholder="Nombre de candidat" type="number"
                                 onChange={(e)=>setConfigScrutin({...configScrutin, nombreCandidat : e.target.value})}
                             />
-                            <CandidatCard/>
-                            <CandidatCard/>
-                            <CandidatCard/>
+                            <Box display={"flex"} justifyContent={"start"} gap={"20px"} margin={"10px 0px"} flexWrap={"wrap"}>
+                                {
+                                    Array.from({length: configScrutin.nombreCandidat>2 ? configScrutin.nombreCandidat : 2} , (item)=>{
+                                        return   <CandidatCard key={item}/>
+                                    })
+                                }
+                            </Box>
                             <Input placeholder="Telephone"/>
                             <Input placeholder="Ville"/>
                             <Input placeholder="Cin"/>

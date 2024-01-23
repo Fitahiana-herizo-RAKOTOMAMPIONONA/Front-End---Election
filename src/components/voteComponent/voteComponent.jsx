@@ -1,8 +1,8 @@
-import { SendAndArchiveOutlined ,InfoRounded, CalendarMonth, AccountCircleRounded} from "@mui/icons-material";
+import {AccountCircleRounded} from "@mui/icons-material";
 import { Save } from "@mui/icons-material";
 import { Box ,Button,IconButton,Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-export default function VoteComponent ({logo,nom,description,type,votant,statVotant,date,couverture,to}){
+export default function VoteComponent ({logo,nom,description,type,votant,statVotant,date,couverture,to,user,idUser}){
     const back = [
         "#3d5bf06f",
         "#8a5680",
@@ -42,6 +42,7 @@ export default function VoteComponent ({logo,nom,description,type,votant,statVot
                 borderTopLeftRadius: "8px",
                 borderTopRightRadius: "8px",
                 padding:"10px",
+                height:"80%"
             }}
         >
             <Box 
@@ -64,7 +65,7 @@ export default function VoteComponent ({logo,nom,description,type,votant,statVot
             </Box>
             <Box
                 sx={{
-                    height:"100%"
+                    // height:"100%"
                 }}
             >
                 <Typography 
@@ -96,26 +97,28 @@ export default function VoteComponent ({logo,nom,description,type,votant,statVot
                     color:"var(--second)"
                 }}
             >
-                <>
-                    {
-                        logo!==undefined ? (
-                            <img src={logo} alt="" srcSet="" width="30px" height="30px"/>
-                            ):(
-                            <AccountCircleRounded/>
-                        )
-                    }
-                </>
-                <Typography
-                    textAlign="left"
-                    fontWeight="600"
-                    sx={{
-                        flex:1,
-                        paddingLeft:"20px",
-                        lineHeight:"50px"
-                    }}
-                >
-                    {nom}
-                </Typography>   
+                <Link to={`/profil/${idUser}`} style={{display: "flex",justifyContent: "start",alignItems:"center"}}>
+                    <>
+                        {
+                            logo!==undefined ? (
+                                <img src={logo} alt="" srcSet="" width="30px" height="30px"/>
+                                ):(
+                                <AccountCircleRounded/>
+                            )
+                        }
+                    </>
+                    <Typography
+                        textAlign="left"
+                        fontWeight="600"
+                        sx={{
+                            flex:1,
+                            paddingLeft:"20px",
+                            lineHeight:"50px"
+                        }}
+                        >
+                        {user || "anonyme"}
+                    </Typography>   
+                </Link>
                 <Link to={`/vote/details/${to}`}>
                     <Button 
                         sx={{

@@ -25,7 +25,7 @@ export default function ScrutinComponent(){
     }, [param.id])
     return <Box>
         <NavBar/>
-        <HeadRetour nom={info.nom || "election Presidentielle"} to="/vote"/>
+        <HeadRetour nom={info.nomScrutin || "election Presidentielle"} to="/vote"/>
         <Box
             sx={{
                 position: "relative",

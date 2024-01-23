@@ -12,6 +12,7 @@ import ScrutinSimple from './routes/scrutin/scrutinSimple';
 import Referendum from './routes/scrutin/referendum';
 import { Box } from '@mui/material';
 import ScrutinComponent from './routes/scrutinComponennt/scrutinComponent';
+import Profil from './routes/profil/profil';
 function App() {
   return (
     <Box className="App"
@@ -33,6 +34,7 @@ function App() {
           <Route element={<ScrutinElection/>} path='/Solution/Scrutin'/>  
           <Route element={<ScrutinSimple/>} path='/Solution/Simple'/>
           <Route element={<Referendum/>} path='/Solution/Referendum'/>
+          <Route element={<Profil/>} path='/Profil/:id'/>
         </Routes>
       </BrowserRouter>
     </Box>
