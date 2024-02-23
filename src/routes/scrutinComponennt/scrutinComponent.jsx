@@ -25,82 +25,40 @@ export default function ScrutinComponent(){
     }, [param.id])
     return <Box>
         <NavBar/>
-        <HeadRetour nom={info.nomScrutin || "election Presidentielle"} to="/vote"/>
-        <Box
-            sx={{
-                position: "relative",
-                width:"100%",
-                height:"500px",
-                objectFit:"cover",
-                marginBottom:"20px",
-                "@media screen and (max-width: 1200px)":{
-                    height:"auto",
-                }
-            }}
-        >
-            <img src={info.pdc || "/assets/image/pdcVote.jpg"} alt="" width="100%" height="100%"/>
-        </Box> 
-        <Box 
-            sx={{
-                padding: "20px",
-            }}  
-        >
-            <Typography
-                textAlign={"center"}
-                fontFamily={"unigeo3"}
-                fontSize={"20px"}
-            >
-                Description
-            </Typography>
-            <Typography
-                textAlign={"center"}
-                fontFamily={"unigeo3"}
-                padding={"20px"}
-            >
-                {info.description}
-            </Typography>
-        </Box>
-        <Box
-            sx={{
-                display: "flex",
-                justifyContent:"center",
-                columnGap:"100px",
-                position:"relative",
-                "@media screen and (max-width: 1200px)":{
-                    display: "block",  
-                }
-            }}
-        >
-            <Box
+        <Box paddingTop={"130px"}>
+            <HeadRetour nom={info.nomScrutin || "election Presidentielle"} to="/vote"/>
+            <Box position={"relative"} width={"100%"} height={"500px"} objectFit={"cover"} marginBottom={"20px"} sx={{"@media screen and (max-width: 1200px)":{height:"auto",}}}>
+                <img src={info.pdc || "/assets/image/pdcVote.jpg"} alt="" width="100%" height="100%"/>
+            </Box> 
+            <Box 
                 sx={{
-                    width:"30%",
-                    height:"400px",
-                    border: "2px solid var(--thirst)",
-                    borderRadius:"10px",
-                    padding:"10px",
-                    "@media screen and (max-width: 1200px)":{
-                        width: "92%", 
-                        height:"200px",
-                        margin: "auto",
-                        marginBottom: "60px"
-                    },
-                }}
-                >
-                Résumé
+                    padding: "20px",
+                }}  
+            >
+                <Typography textAlign={"center"} fontFamily={"unigeo3"} fontSize={"20px"} >
+                    Description
+                </Typography>
+                <Typography textAlign={"center"} fontFamily={"unigeo3"} padding={"20px"} >
+                    {info.description}
+                </Typography>
             </Box>
-            <Box
-                sx={{
-                    width:"60%",
-                    height:"auto",
+            <Box display={"flex"} justifyContent={"center"} columnGap={"100px"} position={"relative"}
+                sx={{ 
                     "@media screen and (max-width: 1200px)":{
-                        width:"100%" 
+                        display: "block",  
                     }
-            }}>
-                <BulletinDeVote image="/assets/image/profile.jpg" numero="01" candidat="rahery kely" profession="enseignant" slogan="fihavanana - fihavaozaana - fitiavana"/>
-                <BulletinDeVote image="/assets/image/profile.jpg" numero="02" candidat="fidelis junior" profession="Pilote" slogan="fihavanana - fihavaozaana - fitiavana"/>
-                <BulletinDeVote image="/assets/image/profile.jpg" numero="03" candidat="Andry rajoelina" profession="Dj" slogan="fihavanana - fihavaozaana - fitiavana"/>
+                }}
+            >
+                <Box width={"30%"} height={"400px"} border={ "2px solid var(--thirst)"} borderRadius={"10px"} padding={"10px"} sx={{  "@media screen and (max-width: 1200px)":{ width: "92%",  height:"200px", margin: "auto", marginBottom: "60px" }, }} >
+                    Résumé
+                </Box>
+                <Box width="60%" height="auto" sx={{ "@media screen and (max-width: 1200px)":{width:"94%" ,margin: "auto"}}}>
+                    <BulletinDeVote image="/assets/image/profile.jpg" numero="01" candidat="rahery kely" profession="enseignant" slogan="fihavanana - fihavaozaana - fitiavana"/>
+                    <BulletinDeVote image="/assets/image/profile.jpg" numero="02" candidat="fidelis junior" profession="Pilote" slogan="fihavanana - fihavaozaana - fitiavana"/>
+                    <BulletinDeVote image="/assets/image/profile.jpg" numero="03" candidat="Andry rajoelina" profession="Dj" slogan="fihavanana - fihavaozaana - fitiavana"/>
+                </Box>
             </Box>
+            <Footer/>
         </Box>
-        <Footer/>
     </Box>
 }

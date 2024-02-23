@@ -18,7 +18,11 @@ export default function Apropos(){
     },[])
     return <Box >
         <NavBar/>
-        <Box sx={{maxWidth: "1500px",margin:"auto",
+        <Box sx={{
+            // NavBar fixe
+            paddingTop:"100px",
+            maxWidth: "1500px",
+            margin:"auto",
             "@media screen and (max-width:1500px)":{
                 marginLeft: "20px",
                 marginRight: "20px",
@@ -90,14 +94,6 @@ export default function Apropos(){
                             <Input fullWidth placeholder="votre nom" sx={{padding:"4px 10px"}}  className="input1"/>
                             <Input fullWidth placeholder="Email" sx={{padding:"4px 10px"}}className="input2"/>
                             <TextareaAutosize sx={{margin:"20px 0px",width: "100%"}} placeholder="votre message" className="input3"/>
-                            {/* <textarea
-                                name="projet" 
-                                id="projet" 
-                                cols="30"
-                                rows="10"
-                                className="contactFormInput contactFormArea" 
-                                placeholder="Votre Projet"
-                            /> */}
                             <Button fullWidth sx={{margin: "20px 0px" , background: "var(--thirst)" ,color: "var(--primary)"}}>
                                 <Send/>
                                 envoyer

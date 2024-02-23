@@ -13,13 +13,10 @@ import Referendum from './routes/scrutin/referendum';
 import { Box } from '@mui/material';
 import ScrutinComponent from './routes/scrutinComponennt/scrutinComponent';
 import Profil from './routes/profil/profil';
+import CandidatPage from './routes/candidat/candidat';
 function App() {
   return (
-    <Box className="App"
-      sx={{
-        position:"relative"
-      }}
-    >
+    <Box className="App">
       <BrowserRouter>
         <Routes>
           <Route element={<Accueil/>} path='/'/>
@@ -32,6 +29,7 @@ function App() {
           <Route element={<SignIn/>} path='/signIn'/>
           <Route element={<Regle/>} path='/regle'/>
           <Route element={<ScrutinElection/>} path='/Solution/Scrutin'/>  
+          <Route element={<CandidatPage/>} path='/Solution/Scrutin/candidat'/>  
           <Route element={<ScrutinSimple/>} path='/Solution/Simple'/>
           <Route element={<Referendum/>} path='/Solution/Referendum'/>
           <Route element={<Profil/>} path='/Profil/:id'/>

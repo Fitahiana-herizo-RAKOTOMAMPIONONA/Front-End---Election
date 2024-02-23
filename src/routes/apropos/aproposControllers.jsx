@@ -19,7 +19,7 @@ function SousTitre ({nom}){
             textTransform:"capitalize",
             letterSpacing: "3px",
             color: "var(--second)",
-            marginTop: "40px"
+            paddingTop: "40px"
         }}
     >
             {nom}

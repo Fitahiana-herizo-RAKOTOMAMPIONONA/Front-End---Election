@@ -5,7 +5,7 @@ function CardAvantage({title,photo,description}){
         <Typography fontFamily={"unigeo3"} color={"var(--second)"} textAlign={"center"} textTransform={"capitalize"} fontSize={"25px"}>
             {title}
         </Typography>
-        <img src={photo} alt="" srcset="" height={"100%"} className="imageAvantage"/>
+        <img src={photo} alt="" srcSet="" height={"100%"} className="imageAvantage"/>
         <Typography fontFamily={"unigeo2"} color={"var(--second)"} textAlign={"center"}>
             {description || "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias harum praesentium nemo? Minus veritatis sit dolorum nobis perferendis pariatur assumenda a facilis aliquam voluptates repellendus natus officiis velit, ducimus delectus!" }
             

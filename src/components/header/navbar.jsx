@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { Typography, Box, Button, IconButton } from "@mui/material";
-import { FacebookOutlined, Instagram, NotificationImportantOutlined, Twitter } from "@mui/icons-material";
+import { FacebookOutlined, Instagram, Menu, NotificationImportantOutlined, Twitter } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { dataNavBar } from "../../data/navbar";
 import "./navbar.css";
-// import {Menu} from "@mui/icons-material"
-// import Input from "@mui/material/Input";
-// import { Search } from "@mui/icons-material"; 
 
 export function NavListe({ item, to }) {
   return ( <Box>
@@ -19,6 +16,7 @@ export function NavListe({ item, to }) {
         // color: "var(--primary)",
         fontFamily : "unigeo3",
         borderBottom: "3px solid transparent",
+        rowGap: "50px",
         ":hover":{
           paddingBottom: "0",
           borderBottom: "3px solid",
@@ -40,7 +38,8 @@ function NavBar() {
   const [pdp,setPdp] =useState(false)
   const [now,setNow]= useState(Date)
   const [time,setTime]=useState(new Date)
-
+  const x = document.querySelector('.deroulant')
+  const y = document.querySelector('.listeNav')
   useEffect(()=>{
     const intervalleTime = setInterval(()=>{
         setTime(new Date)
@@ -50,7 +49,7 @@ function NavBar() {
   setInterval(()=>{
     setNow(Date().toString())
   },1000)
-    axios.defaults.withCredentials = true
+  axios.defaults.withCredentials = true
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -66,57 +65,38 @@ function NavBar() {
         };
         fetchData();
     }, []);
-
+  const rideau = () =>{
+    document.querySelector('.deroulant').classList.toggle('active');
+    document.querySelector('.listeNav').classList.toggle('active');
+  }
   return (
     <Box
       sx={{
-        position: "sticky",
+        // navbar fixe 
+        position: "fixed",
+        background: "var(--primary)",
         paddingTop: "5px",
-            // "@media screen and (max-width:1500px)":{
-            //     marginLeft: "20px",
-            //     marginRight: "20px",
-            // }
+        zIndex:"4",
+        width:"1400px",
+        "@media screen and (max-width:1400px)":{
+          width: "100%",
+        }
         }}
-      // sx={{
-      //   // width: "auto",
-      // //   "@media screen and (max-width: 1200px)":{
-      // //     margin: 0,
-      // // }
-      // }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingBottom:"5px"
-        }}
-      >
-        <Box sx={{
-          flex: "1",
-          gap:"5px"
-        }}>
-          <IconButton>
-            <FacebookOutlined/>
-          </IconButton>
-          <IconButton>
-            <Instagram/>
-          </IconButton>
-          <IconButton>
-            <Twitter/>
-          </IconButton>
+      <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"} paddingBottom={"5px"}>
+        <Box flex={"1"} gap={"5px"} className="reseauNavBar">
+          <IconButton> <FacebookOutlined/> </IconButton>
+          <IconButton> <Instagram/></IconButton>
+          <IconButton> <Twitter/></IconButton>
         </Box>
-        <Box
-          sx={{
-            flex:"1",
-            textAlign:"center"
-          }}
-        >
-          <Typography
-            fontFamily="nexa1"
-            color="var(--second)"
-          >
-            Voteo
+        <Box flex={"1"} textAlign={"center"} sx={{
+          "@media screen and (max-width: 600px)":{
+            textAlign: "left",
+            marginLeft:"10px"
+          }
+        }}>
+          <Typography fontFamily="nexa1" color="var(--second)">
+            Voteo {innerWidth}
           </Typography>
         </Box>
         <Box sx={{flex: 1}}>
@@ -182,21 +162,7 @@ function NavBar() {
         )}
         </Box>
       </Box>
-      <Box 
-        sx={{
-          display:"flex",
-          // justifyContent:" center",
-          justifyContent:"space-between",
-          alignItems:"center",
-          background:"var(--second)",
-          color:"var(--primary)",
-          padding: "10px 0px",
-          "@media screen and (max-width : 600px)":{
-            background:"var(--second)",
-            color:"var(--primary)",
-          }
-        }}
-      >
+      <Box className="deroulant">
           <Box>
             <ul className="listeNav">
               {dataNavBar.map((item, index) => (
@@ -208,6 +174,12 @@ function NavBar() {
             {/* {time} */}
             {/* {now.getHours()} */}
           </Box>
+          {
+            innerWidth < 600 ? 
+            <Box className="bouttonMenu">
+                <IconButton onClick={rideau}><Menu/></IconButton>
+            </Box> : null
+          }
       </Box>
     </Box>
   );

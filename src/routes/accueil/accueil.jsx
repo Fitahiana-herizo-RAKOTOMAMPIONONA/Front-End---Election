@@ -12,7 +12,10 @@ class Accueil extends Component{
     render(){
         return <Box>
                <NavBar/>
-                <Box minHeight={"90vh"} sx={{maxWidth: "1500px",margin:"auto",
+                <Box 
+                    // navbar fixe
+                    minHeight={"100vh"} paddingTop={"100px"}
+                    sx={{maxWidth: "1500px",margin:"auto", 
                     "@media screen and (max-width:1500px)":{
                         marginLeft: "20px",
                         marginRight: "20px",

@@ -1,27 +1,48 @@
-import { Box,Typography } from "@mui/material"
-import { AccountBox } from "@mui/icons-material"
-function CandidatCard (){
-    return <Box
-        sx={{
-            width:"80px",
-            height:"100px",
-            border: "var(--second) solid 2px"
-        }}
-    >
-        <AccountBox
-            sx={{
-                fontSize:"50px"
-            }}
-        />
-        <img src=".\public\assets\image\profile.jpg" alt="" srcSet="" className="imageCandidat"/>
+import { Box,IconButton,Input,Typography } from "@mui/material"
+import { AccountBox ,SwitchAccount ,AddAPhoto ,AddAPhotoOutlined, Close} from "@mui/icons-material"
+import { useState } from "react"
+import "./scrutincontollers.module.css"
+function CandidatCard ({x}){
+    const [selectedImage,setSelectedImage] =useState(null)
+    const handleImageChange = (event) =>{
+        const file = event.target.files[0]
+        if (file)  setSelectedImage(URL.createObjectURL(file))
+        console.log(URL.createObjectURL(file));
+    }
+    console.log(selectedImage);
+    return <Box maxWidth={"700px"} height={"250px"} border={"var(--second) solid 2px"} position={"relative"}  borderRadius={"10px"} margin={"auto"} marginBottom={"30px"} display={"flex"}>
+         <Box flex={"1"} position={"relative"} padding={"20px"}>
+            {
+                selectedImage ? (
+                    <Box>
+                        <img src={selectedImage} alt="Selected" style={{width:"200px", position: "relative",height : "200px" ,objectFit:"cover"}}/>
+                        <IconButton component={"label"} onClick={()=> {setSelectedImage(null)}} style={{zIndex:5 ,position: "absolute", top: "10px" ,right: "10px" ,backgroundColor: "white"}} >
+                            <Close/>
+                        </IconButton> 
+                    </Box>
+                ) : (
+                    <IconButton component={"label"} >
+                        <Input
+                            type="file"
+                            accept="image/*"
+                            style={{display: "none"}}
+                            onChange={handleImageChange}
+                        />
+                         <AddAPhotoOutlined sx={{ fontSize:"50px" }} style={{margin: "auto"}}/>
+                    </IconButton>
+                )
+            }
+        </Box>
+        <Box  flex={"3"} padding={"20px"} className="infoCandidat">
+            <Input type="text" placeholder="Nom" fullWidth/>
+            <Input  type="text" placeholder="Prenom" fullWidth/>
+            <Input  type="date" fullWidth style={{color:"#b1b1b1"}}/>
+            <Input type="text" placeholder="Profession" fullWidth/>
+        </Box>
     </Box>
 }
 function SousTitreConfig ({titre}){
-    return <Typography
-        letterSpacing="3px"
-        fontWeight="10px"
-        margin="5px 0px"
-        color="var(--second)"
+    return <Typography letterSpacing="3px" fontWeight="10px" margin="5px 0px" color="var(--second)"
         sx={{
             "@media screen and (max-width : 600px)": {
                 marginLeft: "-15px"
@@ -33,17 +54,11 @@ function SousTitreConfig ({titre}){
 }
 
 function SousTitreRecap ({label,configScrutin}){
-    return <Box sx={{
-        display: "flex",
-        alignItems: "center"
+    return <Box display={ "flex"} alignItems={"center"}
+    sx={{ 
     }}>
-        <Typography
-            color="var(--second)"
-            textTransform="capitalize"
-        >{label} </Typography>
-        <Typography 
-            fontWeight="700"
-        >
+        <Typography color="var(--second)" textTransform="capitalize">{label} </Typography>
+        <Typography fontWeight="700">
             { 
                 configScrutin || "votre nom scrutin"
             }

@@ -8,7 +8,6 @@ import useFetch from "../../state/useFetch";
 import { Search } from "@mui/icons-material";
 import { Description } from "../apropos/aproposControllers";
 function Vote () {
-        // const {data,load, erreur} = useFetch("http://localhost:8081/scrutin/tout")
         const {data,load, erreur} = useFetch("http://localhost:8081/scrutin/user")
         console.log(load,erreur);
         const [query,setQuery] = useState("")
@@ -21,17 +20,7 @@ function Vote () {
         }
         return <Box>
             <NavBar/>    
-            <Box
-                sx={{
-                    width:"100%",
-                    borderRadius: "10px",
-                    height:"50px",
-                    display: "flex",
-                    justifyContent:"center",
-                    alignItems: "center",
-                    padding:"5px"
-                }}
-            >
+            <Box width={"100%"} borderRadius={"10px"} height={"50px"} display={"flex"} justifyContent={"center"} alignItems={"center"} padding={"5px"} paddingTop={"100px"}>
                 <Input placeholder="chercher"
                     onChange={(e)=>{
                         setQuery(e.target.value)
@@ -40,26 +29,8 @@ function Vote () {
                 <Search/>
             </Box>
             <Description  description={"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore consequuntur temporibus repudiandae libero commodi dignissimos saepe numquam, doloremque voluptatem asperiores quae enim, adipisci at tempore accusantium hic odit molestias ex."}/>
-            {/* <Typography
+            <Box display={"flex"} justifyContent={"center"} flexWrap={"wrap"} marginBottom={"100px"} gap={"15px"} maxWidth={"1500px"} margin={"auto"}
                 sx={{
-                    fontWeight: "20",
-                    fontSize: "20px",
-                    letterSpacing:"3px",
-                    marginBottom:"50px",
-                    textTransform:"capitalize"
-                }}
-            >
-                plus populaire
-            </Typography> */}
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
-                    marginBottom: "100px",
-                    gap: "15px",
-                    maxWidth: "1500px",
-                    margin:"auto",
                     "@media screen and (max-width:1500px)":{
                         marginLeft: "20px",
                         marginRight: "20px",

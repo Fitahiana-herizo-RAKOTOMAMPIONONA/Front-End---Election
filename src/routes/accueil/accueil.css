@@ -36,3 +36,11 @@
     height: 200px;
     object-fit: cover;
 }
+@media screen and (max-width : 1100px) {
+    .imageAccueil{
+        border-top-right-radius: 200px;
+        border-top-left-radius: 200px;
+        height: 400px;
+        object-fit: cover;
+    }
+}

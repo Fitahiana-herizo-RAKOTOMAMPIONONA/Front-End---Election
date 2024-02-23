@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { SkipPrevious } from "@mui/icons-material";
+import { SkipPrevious ,ArrowBack ,ArrowBackIos ,ArrowBackOutlined} from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./signIn.css"
@@ -21,9 +21,7 @@ function SignIn() {
     e.preventDefault();
     try {
         const response = await axios.post("http://localhost:8081/user/verifier", values);
-        if (response.data.success === "success"){
-          navigate('/');
-        }
+        if (response.data.success === "success") navigate('/');
     } catch (error) {
         console.error("Erreur lors de la requête:", error.message);
     }
@@ -31,33 +29,17 @@ function SignIn() {
 
   return (
     <Box width="100%" position="relative">
-      <Typography fontWeight="bold" fontSize="20px">
-        E-vote
-      </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "100px",
-          '@media screen and (max-width: 600px)': {
-            marginTop: "10px",
-          },
-        }}
-      >
+      <Typography fontWeight="bold" fontSize="20px" fontFamily={"unigeo3"} color={"var(--second)"}>
+            Voteo
+        </Typography>
+      <Box display={"flex"} justifyContent={"center"} marginTop={"100px"} sx={{"@media screen and (max-width: 600px)":{marginTop: "10px"}}}>
         <form onSubmit={EnvoyerRequete}>
           <Box>
             <IconButton>
-              <SkipPrevious sx={{
-                  color: "var(--second)",
-                  fontWeight: "900"
-              }}/>
+              <ArrowBack sx={{color: "var(--second)",fontWeight: "900"}}/>
           </IconButton>
-            <Box
-              sx={{
-                border: "2px var(--thirst) solid",
-                borderRadius: "30px",
-                width: "400px",
-                padding: "50px",
+            <Box border={"2px var(--thirst) solid"} borderRadius={"30px"} width={"400px"} padding={"50px"}
+              sx={{ 
                 '@media screen and (max-width: 600px)': {
                   border: 0,
                   width: "100%",
@@ -65,33 +47,16 @@ function SignIn() {
                 },
               }}
             >
-              <Typography
-                sx={{
-                  textAlign: "center",
-                  fontFamily: "cursive",
-                  color: "var(--second)",
-                  fontWeight: "bold",
-                  fontSize: "30px",
-                }}
-              >
-                S'inscrire
+              <Typography  textAlign={"center"} fontFamily={"cursive"} color={"var(--second)"} fontWeight={"bold"} fontSize={"30px"}>
+                Se connecter
               </Typography>
               <Typography>E-mail</Typography>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="champInput"
+              <input type="email" name="email" id="email" className="champInput"
                 onChange={(e) => setValues({ ...values, email: e.target.value })}
               />
 
               <Typography>Mot de passe</Typography>
-              <input
-                type="password"
-                name="motDePasse"
-                id="motDePasse"
-                className="champInput"
-
+              <input type="password" name="motDePasse" id="motDePasse" className="champInput"
                 onChange={(e) => setValues({ ...values, motDePasse: e.target.value })}
               />
 
@@ -113,13 +78,7 @@ function SignIn() {
               </Button>
               <Link to="/signUp">
                 <Button
-                  sx={{
-                    width: "100%",
-                    textAlign: "center",
-                    border: "1px solid var(--thirst)",
-                    alignItems: "center",
-                    margin: "20px 0px",
-                  }}
+                  sx={{width: "100%",textAlign: "center",border: "1px solid var(--thirst)",alignItems: "center",margin: "20px 0px"}}
                 >
                   Créer un compte
                 </Button>
